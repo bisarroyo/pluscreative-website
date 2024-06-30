@@ -11,20 +11,24 @@ import {
   Button
 } from '@nextui-org/react'
 
-export default function App() {
+export default function App({ path }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
-  const menuItems = [
-    'Profile',
-    'Dashboard',
-    'Activity',
-    'Analytics',
-    'System',
-    'Deployments',
-    'My Settings',
-    'Team Settings',
-    'Help & Feedback',
-    'Log Out'
+  const menuItemsMobile = [
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About' },
+    { path: '/services', label: 'Services' },
+    { path: '/portfolio', label: 'Portfolio' },
+    { path: '/blog', label: 'Blog' },
+    { path: '/contact', label: 'Contact' }
+  ]
+  const menuItemsDesktop = [
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About' },
+    { path: '/services', label: 'Services' },
+    { path: '/portfolio', label: 'Portfolio' },
+    { path: '/blog', label: 'Blog' },
+    { path: '/contact', label: 'Contact' }
   ]
 
   return (
@@ -41,23 +45,20 @@ export default function App() {
       </NavbarContent>
 
       <NavbarContent className='hidden sm:flex gap-4' justify='center'>
-        <NavbarItem>
-          <Link color='foreground' href='#'>
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href='#' aria-current='page'>
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color='foreground' href='#'>
-            Integrations
-          </Link>
-        </NavbarItem>
+        {menuItemsDesktop.map((item, index) => (
+          <NavbarItem key={`${item.label}-${index}`}>
+            <Link
+              color={item.path === path ? 'primary' : 'foreground'}
+              className='w-full'
+              href={item.path}
+              size='lg'
+            >
+              {item.label}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
-      <NavbarContent justify='end'>
+      {/* <NavbarContent justify='end'>
         <NavbarItem className='hidden lg:flex'>
           <Link href='#'>Login</Link>
         </NavbarItem>
@@ -66,23 +67,23 @@ export default function App() {
             Sign Up
           </Button>
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+        {menuItemsMobile.map((item, index) => (
+          <NavbarMenuItem key={`${item.label}-${index}`}>
             <Link
               color={
-                index === 2
+                item.path === path
                   ? 'primary'
-                  : index === menuItems.length - 1
+                  : index === menuItemsMobile.length - 1
                   ? 'danger'
                   : 'foreground'
               }
               className='w-full'
-              href='#'
+              href={item.path}
               size='lg'
             >
-              {item}
+              {item.label}
             </Link>
           </NavbarMenuItem>
         ))}
