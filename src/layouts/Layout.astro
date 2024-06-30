@@ -6,8 +6,12 @@ interface Props {
 import {NextUIProvider} from "@nextui-org/react";
 
 const { title } = Astro.props;
+const { pathname } = Astro.url;
+
+const path = pathname.toString()
 
 import Navbar from '../components/Navbar'
+
 ---
 
 <!doctype html>
@@ -21,9 +25,9 @@ import Navbar from '../components/Navbar'
 		<title>{title}</title>
 	</head>
 	<NextUIProvider>
-		<body class="dark text-foreground bg-background">
-			<Navbar client:visible/>
-			<main class="dark text-foreground bg-background">
+		<body>
+			<Navbar path={path} client:visible/>
+			<main class="container">
 				<slot />
 			</main>
 		</body>
