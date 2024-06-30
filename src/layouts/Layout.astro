@@ -2,13 +2,10 @@
 interface Props {
 	title: string;
 }
-
 import {NextUIProvider} from "@nextui-org/react";
 
 const { title } = Astro.props;
 const { pathname } = Astro.url;
-
-const path = pathname.toString()
 
 import Navbar from '../components/Navbar'
 
@@ -23,17 +20,28 @@ import Navbar from '../components/Navbar'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
 	</head>
-	<NextUIProvider>
-		<body>
-			<Navbar path={path} client:visible/>
-			<main>
-				<slot />
-			</main>
-		</body>
-	</NextUIProvider>
+		<NextUIProvider>
+			<Navbar path={pathname} client:only/>
+			<slot />
+		</NextUIProvider>
 </html>
 <style is:global>
+	body {
+		@apply transition-colors duration-300 ease-in-out;
+	}
+	* {
+		transition: background-color 0.3s ease;
+	}
+
 	/* :root {
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;

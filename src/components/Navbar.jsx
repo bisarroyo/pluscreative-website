@@ -11,6 +11,8 @@ import {
   Button
 } from '@nextui-org/react'
 
+import ThemeToggle from './ThemeToggle'
+
 export default function App({ path }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
@@ -57,6 +59,7 @@ export default function App({ path }) {
             </Link>
           </NavbarItem>
         ))}
+        <ThemeToggle />
       </NavbarContent>
       {/* <NavbarContent justify='end'>
         <NavbarItem className='hidden lg:flex'>
