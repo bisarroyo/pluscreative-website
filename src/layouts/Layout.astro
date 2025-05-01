@@ -2,6 +2,7 @@
 interface Props {
 	title: string;
 }
+import { ViewTransitions } from 'astro:transitions';
 import {NextUIProvider} from "@nextui-org/react";
 
 const { title } = Astro.props;
@@ -20,14 +21,15 @@ import Navbar from '../components/Navbar'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<script>
+		<ViewTransitions />
+		<!-- <script>
       (function() {
         const storedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = storedTheme || (prefersDark ? 'dark' : 'light');
         document.documentElement.classList.add(theme);
       })();
-    </script>
+    </script> -->
 	</head>
 		<NextUIProvider>
 			<Navbar path={pathname} client:only/>
@@ -37,6 +39,21 @@ import Navbar from '../components/Navbar'
 <style is:global>
 	body {
 		@apply transition-colors duration-300 ease-in-out;
+	}
+	h1 {
+		@apply text-4xl font-bold mt-2 mb-4;
+	}
+
+	h2 {
+		@apply text-3xl font-semibold mt-2 mb-4;
+	}
+
+	h3 {
+		@apply text-2xl font-semibold mt-2 mb-3;
+	}
+
+	p {
+		@apply text-base leading-relaxed mt-2 mb-2;
 	}
 	* {
 		transition: background-color 0.3s ease;
