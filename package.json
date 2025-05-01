@@ -1,26 +1,16 @@
 {
-  "name": "pluscreative-website",
+  "name": "",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^4.2.7",
-    "@astrojs/tailwind": "^6.0.2",
-    "@nextui-org/react": "^2.4.1",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@tailwindcss/vite": "^4.1.5",
     "astro": "^5.7.10",
-    "framer-motion": "^11.2.10",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwindcss": "^4.1.5",
-    "typescript": "^5.4.5"
+    "tailwindcss": "^4.1.5"
   }
 }

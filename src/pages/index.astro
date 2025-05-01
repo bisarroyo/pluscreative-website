@@ -1,41 +1,11 @@
 ---
+import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-import {Button} from '@nextui-org/react';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Plus creative Solutions">
-		<div class="bg-blue-primary text-white">
-			<div class="container h-[400px]">
-				<div class="grid grid-cols-2 gap-2">
-					<div class="">
-						<h2 class="text-2xl">Transform Your Business with Cutting-Edge Web Solutions</h2>
-						<h3 class="text-xl">We create custom websites that drive traffic, engagement, and conversions.</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-				<div >
-					<img class="rounded-3xl" src="https://cdn.pixabay.com/photo/2016/11/29/13/54/buildings-1870010_960_720.jpg" alt="">
-				</div>
-				<div >
-					<p>We specialize in creating and maintaining high-performance websites using WordPress and advanced web frameworks. Our expert team ensures your online presence is not just attractive but also robust and user-friendly.</p>
-					<a href="">Get Started</a>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="grid grid-cols-2">
-				<div>
-					<h3>Our Key Services</h3>
-					<ul>
-						<li>Custom WordPress Development</li>
-						<li>Responsive Design</li>
-						<li>E-commerce Solutions</li>
-						<li>Website Maintenance and Support</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+<Layout>
+	<Welcome />
 </Layout>
