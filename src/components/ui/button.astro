@@ -1,0 +1,72 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+
+const button = cva("button", {
+  variants: {
+    variant: {
+      primary: ["bg-primary", "text-white", "border-transparent", "rounded-lg", "flex items-center", "cursor-pointer"],
+      secondary: ["bg-white", "text-gray-800", "border-gray-400" , "rounded-lg", "flex items-center", "cursor-pointer"],
+      outline: [
+        "bg-transparent",
+        "text-gray-800",
+        "border-gray-400",
+        "border",
+        "rounded-lg",
+        "rounded-lg", "flex items-center", "cursor-pointer"
+      ],
+      ghost: [
+        "bg-transparent",
+        "text-gray-800",
+        "border-transparent",
+        "rounded-lg",
+        "rounded-lg", "flex items-center", "cursor-pointer"
+      ],
+    },
+    size: {
+      sm: ["text-sm", "py-1", "px-2"],
+      md: ["text-base", "py-2", "px-4"],
+      lg: ["text-lg", "py-1", "px-4"],
+      xl: ["text-xl", "py-4", "px-8"],
+    },
+    disabled: {
+      false: null,
+      true: ["opacity-50", "cursor-not-allowed"],
+    },
+  },
+  compoundVariants: [
+    {
+      variant: "primary",
+      disabled: false,
+      class: "hover:bg-primary/80",
+    },
+    {
+      variant: "secondary",
+      disabled: false,
+      class: "hover:bg-gray-100",
+    },
+    { variant: "primary", size: "md", class: "uppercase" },
+    { variant: "secondary", size: "md", class: "uppercase" },
+    { variant: "outline", size: "md", class: "uppercase" },
+    { variant: "ghost", size: "md", class: "uppercase"}
+  ],
+});
+
+export interface Props
+  extends Omit<HTMLAttributes<"button">, "disabled">,
+    VariantProps<typeof button> {}
+
+const {
+  class: className,
+  variant = "primary",
+  size = "md",
+  disabled = false,
+} = Astro.props;
+---
+
+<button
+  class={button({ variant, size, disabled, className })}
+  disabled={disabled}
+>
+  <slot />
+</button>

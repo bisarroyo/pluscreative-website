@@ -1,0 +1,37 @@
+---
+import Right from "@/icons/right.astro"
+import Button from "@/components/ui/button.astro"
+---
+
+<div class="w-full py-20 md:py-40 px-4">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-1 gap-8 items-center md:grid-cols-2">
+      <div class="flex gap-4 flex-col">
+        <div class="flex gap-4 flex-col">
+          <h1 class="text-4xl md:text-6xl max-w-lg tracking-tighter text-left font-regular">
+            This is the start of something!
+          </h1>
+          <p class="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-md text-left">
+            Managing a small business today is already tough. Avoid further
+            complications by ditching outdated, tedious trade methods. Our
+            goal is to streamline SMB trade, making it easier and faster than
+            ever.
+          </p>
+        </div>
+        <div class="flex flex-row gap-4">
+          <Button size="lg" class="gap-4" variant="outline">
+            Jump on a call
+          </Button> 
+          <Button size="lg" class="gap-4">
+            Sign up here <Right class="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-8">
+        <div class="bg-gray-200 rounded-md aspect-square"></div>
+        <div class="bg-gray-200 rounded-md row-span-2"></div>
+        <div class="bg-gray-200 rounded-md aspect-square"></div>
+      </div>
+    </div>
+  </div>
+</div>
