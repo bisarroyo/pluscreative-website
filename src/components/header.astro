@@ -22,6 +22,14 @@ const socialLinks = [
   { href: 'https://instagram.com', text: 'Instagram', icon: Instagram },
   { href: 'https://linkedin.com', text: 'LinkedIn', icon: LinkedIn },
 ];
+
+
+const { pathname } = Astro.url;
+
+const isActive = (path:string):boolean => {
+  return pathname === path
+};
+
 ---
 
 
@@ -34,7 +42,7 @@ const socialLinks = [
     </div>
     <ul class="gap-4 hidden md:flex">
       {links.map(link => (
-        <li class="text-md hover:text-primary transition-colors duration-300">
+        <li class:list={["text-md hover:text-primary transition-colors duration-300", isActive(link.href) && 'text-primary'] }>
           <a href={link.href}>{link.text}</a>
         </li>
       ))}
@@ -66,7 +74,7 @@ const socialLinks = [
       <div id="mobile__menu" class="hidden w-full mt-4 min-h-dvh">
         <ul class="flex flex-col gap-4">
           {links.map(link => (
-            <li class="text-md hover:text-primary transition-colors duration-300 menu__animate">
+            <li class:list={["text-md hover:text-primary transition-colors duration-300", isActive(link.href) && 'text-primary', "menu__animate"] }>
               <a href={link.href}>{link.text}</a>
             </li>
           ))}
@@ -88,9 +96,9 @@ const socialLinks = [
 <script>
   const menuButton = document.querySelector('button') as HTMLElement;
   const menu = document.querySelector('#mobile__menu') as HTMLElement;
-  const menuItems = document.querySelectorAll('.menu__animate') as NodeListOf<HTMLElement>;
   const iconClose = document.querySelector('.icon-tabler-x') as HTMLElement;
   const iconMenu = document.querySelector('.icon-tabler-menu-3') as HTMLElement;
+  const menuItems = document.querySelectorAll('.menu__animate') as NodeListOf<HTMLElement>;
   const socialIcons = document.querySelectorAll('.social__animate') as NodeListOf<HTMLElement>;
 
   menuButton.addEventListener('click', () => {
