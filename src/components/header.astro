@@ -1,0 +1,132 @@
+---
+
+const links = [
+  { href: '/', text: 'Home' },
+  { href: '/about', text: 'About' },
+  { href: '/contact', text: 'Contact' },
+  { href: '/blog', text: 'Blog' },
+  { href: '/services', text: 'Services' },
+  { href: '/portfolio', text: 'Portfolio' }
+
+];
+import Facebook from '@/icons/facebook.astro';
+import Twitter from '@/icons/twitter.astro';
+import Instagram from '@/icons/instagram.astro';
+import LinkedIn from '@/icons/linkedin.astro';
+
+import Logo from '@/icons/logo.astro';
+
+const socialLinks = [
+  { href: 'https://twitter.com', text: 'Twitter', icon: Twitter },
+  { href: 'https://facebook.com', text: 'Facebook', icon: Facebook },
+  { href: 'https://instagram.com', text: 'Instagram', icon: Instagram },
+  { href: 'https://linkedin.com', text: 'LinkedIn', icon: LinkedIn },
+];
+---
+
+
+<header class="w-full md:w-full flex items-center justify-center md:fixed md:top-2 md:z-50">
+  <nav class="flex justify-between items-center w-full md:w-3xl backdrop-blur-2xl bg-white/30 md:rounded-lg py-4 px-8 md:shadow-lg">
+    <div class="items-center hidden md:flex">
+      <a href="/" class="text-2xl font-bold">
+        <Logo width={30} height={30}/>
+      </a>
+    </div>
+    <ul class="gap-4 hidden md:flex">
+      {links.map(link => (
+        <li class="text-md hover:text-primary transition-colors duration-300">
+          <a href={link.href}>{link.text}</a>
+        </li>
+      ))}
+    </ul>
+    <ul class="gap-4 hidden md:flex">
+      {socialLinks.map(link => {
+        const Icon = link.icon;
+        return(
+        <li class="text-md hover:text-primary transition-colors duration-300">
+          <a target="_blank" href={link.href}><Icon /></a>
+        </li>
+        )
+      })}
+    </ul>
+
+    <div class="md:hidden w-full flex items-center flex-wrap">
+      <div class="flex items-center justify-between w-full">
+
+        <div class="flex items-center ">
+          <a href="/" class="text-2xl font-bold">
+            <Logo width={30} height={30}/>
+          </a>
+        </div>
+        <button class="text-2xl">
+          <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-menu-3"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 6h10" /><path d="M4 12h16" /><path d="M7 12h13" /><path d="M4 18h10" /></svg>
+          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div id="mobile__menu" class="hidden w-full mt-4 min-h-dvh">
+        <ul class="flex flex-col gap-4">
+          {links.map(link => (
+            <li class="text-md hover:text-primary transition-colors duration-300 menu__animate">
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))}
+        </ul>
+        <ul class="flex gap-4 mt-4">
+          {socialLinks.map(link => {
+            const Icon = link.icon;
+            return(
+            <li class="text-md hover:text-primary transition-colors duration-300 social__animate">
+              <a target="_blank" href={link.href}><Icon /></a>
+            </li>
+            )
+          })}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<script>
+  const menuButton = document.querySelector('button') as HTMLElement;
+  const menu = document.querySelector('#mobile__menu') as HTMLElement;
+  const menuItems = document.querySelectorAll('.menu__animate') as NodeListOf<HTMLElement>;
+  const iconClose = document.querySelector('.icon-tabler-x') as HTMLElement;
+  const iconMenu = document.querySelector('.icon-tabler-menu-3') as HTMLElement;
+  const socialIcons = document.querySelectorAll('.social__animate') as NodeListOf<HTMLElement>;
+
+  menuButton.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    iconMenu.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuItems.forEach((item, index) => {
+      item.style.animationDelay = `${index * 0.1}s`;
+    });
+    socialIcons.forEach((icon, index) => {
+      icon.style.animationDelay = `${index * 0.1}s`;
+    });
+  });
+</script>
+<style>
+  .menu__animate {
+    opacity: 0;
+    transform: translatex(10px);
+    animation: fadeIn 0.3s forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translatex(0);
+    }
+  }
+  .social__animate {
+    opacity: 0;
+    transform: translatex(10px);
+    animation: fadeIn 0.3s forwards;
+  }
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translatex(0);
+    }
+  }
+</style>
