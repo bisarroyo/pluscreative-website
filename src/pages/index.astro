@@ -1,9 +1,29 @@
 ---
 
+import Hero from '@/components/hero.astro';
 import Layout from '../layouts/Layout.astro';
+import Featured from '@/components/featured.astro';
 
 ---
 
 <Layout>
-
+	<Hero />
+	<Featured
+		direction='right'
+		title='This is the start of something new'
+		text='Managing a small business today is already tough. Avoid further complications by ditching outdated, tedious trade methods. Our goal is to streamline SMB trade, making it easier and faster than ever.'
+		badge='Platform'
+		/>
+		<Featured
+		direction='left'
+		title='This is the start of something new'
+		text='Managing a small business today is already tough. Avoid further complications by ditching outdated, tedious trade methods. Our goal is to streamline SMB trade, making it easier and faster than ever.'
+		badge='Platform'
+		/>
+		<Featured
+		direction='right'
+		title='This is the start of something new'
+		text='Managing a small business today is already tough. Avoid further complications by ditching outdated, tedious trade methods. Our goal is to streamline SMB trade, making it easier and faster than ever.'
+		badge='Platform'
+		/>
 </Layout>
