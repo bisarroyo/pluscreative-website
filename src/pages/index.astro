@@ -2,30 +2,30 @@
 
 import Hero from '@/components/hero.astro';
 import Layout from '../layouts/Layout.astro';
-import Featured from '@/components/featured.astro';
+import FeaturedRight from '@/components/featured-right.astro';
+import FeaturedLeft from '@/components/featured-left.astro';
 import Heading from '@/components/heading.astro';
+import CallToAction from '@/components/cta.astro';
 
 ---
 
 <Layout>
 	<Hero />
 	<Heading />
-	<Featured
-		direction='right'
+	<FeaturedRight
 		title='This is the start of something new'
 		text='Managing a small business today is already tough. Avoid further complications by ditching outdated, tedious trade methods. Our goal is to streamline SMB trade, making it easier and faster than ever.'
 		badge='Platform'
 		/>
-		<Featured
-		direction='left'
+		<FeaturedLeft
 		title='This is the start of something new'
 		text='Managing a small business today is already tough. Avoid further complications by ditching outdated, tedious trade methods. Our goal is to streamline SMB trade, making it easier and faster than ever.'
 		badge='Platform'
 		/>
-		<Featured
-		direction='right'
+		<FeaturedRight
 		title='This is the start of something new'
 		text='Managing a small business today is already tough. Avoid further complications by ditching outdated, tedious trade methods. Our goal is to streamline SMB trade, making it easier and faster than ever.'
 		badge='Platform'
 		/>
+		<CallToAction />
 </Layout>
