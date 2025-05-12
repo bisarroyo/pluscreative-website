@@ -1,0 +1,35 @@
+---
+import Phone from "@/icons/phone.astro"
+import PhoneRing from "@/icons/phone-ring.astro"
+import Right from "@/icons/right.astro"
+import Badge from "@/components/ui/badge.astro";
+import Button from "@/components/ui/button.astro";
+---
+
+  <div class="w-full pt-20 lg:pt-40 px-4 lg:px-0">
+    <div class="container mx-auto">
+      <div class="flex flex-col text-center bg-muted rounded-md p-4 lg:p-14 gap-8 items-center">
+        <div>
+          <Badge>Get started</Badge>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h3 class="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular">
+            Try our platform today!
+          </h3>
+          <p class="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl">
+            Managing a small business today is already tough. Avoid further
+            complications by ditching outdated, tedious trade methods. Our goal
+            is to streamline SMB trade, making it easier and faster than ever.
+          </p>
+        </div>
+        <div class="flex flex-row gap-4">
+          <Button class="gap-4" variant="outline">
+            Jump on a call <Phone class="w-4 h-4" />
+          </Button>
+          <Button class="gap-4">
+            Sign up here <Right class="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
