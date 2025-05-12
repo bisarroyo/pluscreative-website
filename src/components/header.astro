@@ -24,12 +24,6 @@ const socialLinks = [
 ];
 
 
-const { pathname } = Astro.url;
-
-const isActive = (path:string):boolean => {
-  return pathname === path
-};
-
 ---
 
 
@@ -42,7 +36,7 @@ const isActive = (path:string):boolean => {
     </div>
     <ul class="gap-4 hidden md:flex">
       {links.map(link => (
-        <li class:list={["text-md hover:text-primary transition-colors duration-300", isActive(link.href) && 'text-primary'] }>
+        <li class:list={["text-md hover:text-primary transition-colors duration-300"] }>
           <a href={link.href}>{link.text}</a>
         </li>
       ))}
@@ -74,7 +68,7 @@ const isActive = (path:string):boolean => {
       <div id="mobile__menu" class="hidden w-full mt-4 min-h-dvh">
         <ul class="flex flex-col gap-4">
           {links.map(link => (
-            <li class:list={["text-md hover:text-primary transition-colors duration-300", isActive(link.href) && 'text-primary', "menu__animate"] }>
+            <li class:list={["text-md hover:text-primary transition-colors duration-300","menu__animate"] }>
               <a href={link.href}>{link.text}</a>
             </li>
           ))}
@@ -111,6 +105,15 @@ const isActive = (path:string):boolean => {
     socialIcons.forEach((icon, index) => {
       icon.style.animationDelay = `${index * 0.1}s`;
     });
+  });
+
+  const path = window.location.pathname;
+  const links = document.querySelectorAll('li');
+  links.forEach(link => {
+    const href = link.querySelector('a')?.getAttribute('href');
+    if (href === path) {
+      link.classList.add('text-primary');
+    }
   });
 </script>
 <style>
