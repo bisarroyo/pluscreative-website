@@ -1,0 +1,113 @@
+---
+
+  const navigationItems = [
+    {
+      title: "Home",
+      href: "/",
+      description: "",
+    },
+    {
+      title: "Product",
+      description: "Managing a small business today is already tough.",
+      items: [
+        {
+          title: "Reports",
+          href: "/reports",
+        },
+        {
+          title: "Statistics",
+          href: "/statistics",
+        },
+        {
+          title: "Dashboards",
+          href: "/dashboards",
+        },
+        {
+          title: "Recordings",
+          href: "/recordings",
+        },
+      ],
+    },
+    {
+      title: "Company",
+      description: "Managing a small business today is already tough.",
+      items: [
+        {
+          title: "About us",
+          href: "/about",
+        },
+        {
+          title: "Fundraising",
+          href: "/fundraising",
+        },
+        {
+          title: "Investors",
+          href: "/investors",
+        },
+        {
+          title: "Contact us",
+          href: "/contact",
+        },
+      ],
+    },
+  ];
+  ---
+
+<div class="w-full px-4 lg:px-0 py-20 lg:py-40 bg-foreground text-background">
+  <div class="container mx-auto">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="flex gap-8 flex-col items-start">
+        <div class="flex gap-2 flex-col">
+          <h2 class="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left">
+            Plus Creative Solutions
+          </h2>
+          <p class="text-lg max-w-lg leading-relaxed tracking-tight text-background/75 text-left">
+            Managing a small business today is already tough.
+          </p>
+        </div>
+        <div class="flex gap-10 md:gap-20 flex-row">
+          <div class="flex flex-col text-sm max-w-lg leading-relaxed tracking-tight text-background/75 text-left">
+            <p>San José</p>
+            <p>Pérez Zeledón</p>
+            <p>San Isidro de el General</p>
+          </div>
+          <div class="flex flex-col text-sm max-w-lg leading-relaxed tracking-tight text-background/75 text-left">
+            <a href="/">Terminos del Servicio</a>
+            <a href="/">Política de Privacidad</a>
+          </div>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-10 items-start">
+        {navigationItems.map((item) => (
+          <div
+            class="flex text-base gap-1 flex-col items-start"
+          >
+            <div class="flex flex-col gap-2">
+              {item.href ? (
+                <a
+                  href={item.href}
+                  class="flex justify-between items-center"
+                >
+                  <span class="text-xl">{item.title}</span>
+                </a>
+              ) : (
+                <p class="text-xl">{item.title}</p>
+              )}
+              {item.items &&
+                item.items.map((subItem) => (
+                  <a
+                    href={subItem.href}
+                    class="flex justify-between items-center"
+                  >
+                    <span class="text-background/75">
+                      {subItem.title}
+                    </span>
+                  </a>
+                ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
